@@ -171,7 +171,7 @@ export default defineConfig([
       'check-file/filename-naming-convention': [
         'error',
         {
-          '**/*.{ts,tsx}': 'KEBAB_CASE',
+          'src/**/*.{ts,tsx}': 'CAMEL_CASE',
         },
         {
           ignoreMiddleExtensions: true,

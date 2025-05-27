@@ -1,19 +1,31 @@
-import { Route, Routes } from 'react-router-dom';
+// src/App.tsx
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-import Layout from './components/layout';
-import NewsDetail from './components/news-detail';
-import NewsList from './components/news-list';
+import { css } from '../styled-system/css';
 
-function App() {
+import { NewsCategorySelector } from './components/newsCategorySelector';
+import { NewsFeed } from './components/newsFeed';
+
+const queryClient = new QueryClient();
+
+export default function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<NewsList />} />
-        <Route path="/category/:category" element={<NewsList />} />
-        <Route path="/news/:id" element={<NewsDetail />} />
-      </Route>
-    </Routes>
+    <QueryClientProvider client={queryClient}>
+      <div className={css({ minH: '100vh', bg: 'gray.100' })}>
+        <header
+          className={css({ bg: 'white', shadow: 'sm', py: '4', mb: '6' })}
+        >
+          <div className={css({ maxW: '6xl', mx: 'auto', px: '4' })}>
+            <h1 className={css({ fontSize: '2xl', fontWeight: 'bold' })}>
+              News Feed
+            </h1>
+          </div>
+        </header>
+        <main className={css({ maxW: '6xl', mx: 'auto', px: '4' })}>
+          <NewsCategorySelector />
+          <NewsFeed />
+        </main>
+      </div>
+    </QueryClientProvider>
   );
 }
-
-export default App;
