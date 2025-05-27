@@ -17,7 +17,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview",
+    "preview": "vite preview --port 8080",
     "prepare": "husky",
     "start": "node index.js",
     "test": "node index.js",
