@@ -18,7 +18,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview --port 8080",
-    "prepare": "husky",
+    "prepare": "husky && panda codegen",
     "start": "node index.js",
     "test": "node index.js",
     "lint": "eslint src",
