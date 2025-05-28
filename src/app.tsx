@@ -17,7 +17,7 @@ export default function App() {
         >
           <div className={css({ maxW: '6xl', mx: 'auto', px: '4' })}>
             <h1 className={css({ fontSize: '2xl', fontWeight: 'bold' })}>
-              News Feed
+              Новостная лента
             </h1>
           </div>
         </header>

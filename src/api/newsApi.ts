@@ -44,6 +44,10 @@ export const fetchNews = async (
     );
     return response.data;
   } catch (error) {
-    throw new Error(`'Failed to fetch news error: ${error}'`);
+    if (axios.isAxiosError(error)) {
+      throw new Error(`'Ошибка загрузки новостей: ${error.message}'`);
+    } else {
+      throw new Error('Ошибка загрузки новостей');
+    }
   }
 };

@@ -4,9 +4,13 @@ import { NewsArticleIntf } from '../api/newsApi';
 
 interface NewsArticleProps {
   article: NewsArticleIntf;
+  isFallback?: boolean;
 }
 
-export const NewsArticle = ({ article }: NewsArticleProps) => {
+export const NewsArticle = ({
+  article,
+  isFallback = false,
+}: NewsArticleProps) => {
   return (
     <article
       className={css({
@@ -14,15 +18,43 @@ export const NewsArticle = ({ article }: NewsArticleProps) => {
         borderRadius: 'lg',
         overflow: 'hidden',
         mb: '4',
-        bg: 'white',
+        bg: isFallback ? 'gray.50' : 'white',
         boxShadow: 'md',
+        position: 'relative',
+        _hover: {
+          transform: 'translateY(-2px)',
+          transition: 'transform 0.2s',
+        },
       })}
     >
+      {isFallback && (
+        <div
+          className={css({
+            position: 'absolute',
+            top: '2',
+            right: '2',
+            bg: 'yellow.500',
+            color: 'white',
+            px: '2',
+            py: '1',
+            borderRadius: 'full',
+            fontSize: 'xs',
+            fontWeight: 'bold',
+          })}
+        >
+          Симуляция
+        </div>
+      )}
       {article.urlToImage && (
         <img
           src={article.urlToImage}
-          alt={article.title}
-          className={css({ w: 'full', h: '48', objectFit: 'cover' })}
+          alt=""
+          className={css({
+            w: '16px',
+            h: '16px',
+            flexShrink: 0,
+            objectFit: 'contain',
+          })}
         />
       )}
       <div className={css({ p: '4' })}>
